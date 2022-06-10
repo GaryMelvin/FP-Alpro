@@ -17,15 +17,13 @@ int menu(){
 	puts("| 5  | Steak\t\t|	Rp. 30000	| 10 | Air Putih\t|\tRp. 3000	|");
 	puts("+===========================================================================================|");
 
-	printf("Jumlah menu yang ingin dipesan : ");
-	scanf("%d", &banyak);
-
 	return banyak;
 }
 
 
 int main(){
 	
+	char nama[20];
 	int pil, jumlah, banyak, porsi;
 	int total, bayar, diskon, akhir, harga, uang, kembalian;
 
@@ -33,8 +31,13 @@ int main(){
     time(&waktu);
 
 	menu:
+		system("cls");
+		fflush(stdin);
+		printf("Masukkan nama Anda : ");
+		scanf("%[^\n]s", nama);
       banyak = menu();
-	  
+	  	printf("\nHalo %s,\nSilahkan masukkan jumlah menu yang ingin dipesan : ", nama);
+		scanf("%d", &banyak);
 		jumlah=1;
 		bayar=0;
 	for(jumlah=1; jumlah<=banyak; jumlah++){
@@ -170,7 +173,6 @@ int main(){
 		}
 		bayar = bayar + total;
 	}
-		//system("cls");
 		puts("");
 		puts("+======================================+");
 		puts("| --------- STRUK PEMBAYARAN --------- |");
@@ -207,7 +209,7 @@ int main(){
             goto menu;
         } else{
             system("cls");
-            puts("Sampai Jumpa!");
+            printf("Terima kasih sudah berbelanja kak %s! Sampai Jumpa!\n", nama);
 			printf("======================================================\n");
             printf("\t\t%s\n", ctime(&waktu));
 			printf("======================================================\n");
@@ -215,4 +217,3 @@ int main(){
 
 	return 0;
 }
-
