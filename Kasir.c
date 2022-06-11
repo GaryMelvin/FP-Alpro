@@ -20,12 +20,12 @@ int menu(){
 	return banyak;
 }
 
-
 int main(){
 	
 	char nama[20];
 	int pil, jumlah, banyak, porsi;
 	int total, bayar, diskon, akhir, harga, uang, kembalian;
+	char ulang;
 
     time_t waktu;
     time(&waktu);
@@ -201,19 +201,22 @@ int main(){
         puts("+=======================================+");
         puts("");
 
-		char ulang;
+		label_lanjut:
+		fflush(stdin);
         printf("Apakah Anda ingin belanja lagi?[y/n] : ");
         scanf("%s", &ulang);
         if(ulang == 'Y' || ulang == 'y'){
             system("cls");
             goto menu;
-        } else{
+        } else if(ulang == 'N' || ulang == 'n'){
             system("cls");
             printf("Terima kasih sudah berbelanja kak %s! Sampai Jumpa!\n", nama);
 			printf("======================================================\n");
             printf("\t\t%s\n", ctime(&waktu));
 			printf("======================================================\n");
-        }
+		} else{
+			goto label_lanjut;
+		}
 
 	return 0;
 }
